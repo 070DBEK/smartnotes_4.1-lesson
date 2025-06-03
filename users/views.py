@@ -26,11 +26,7 @@ class RegisterView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-
-        # Create email verification token
         verification_token = EmailVerificationToken.objects.create(user=user)
-
-        # Send verification email (in production)
         if not settings.DEBUG:
             send_mail(
                 'Verify your email',
