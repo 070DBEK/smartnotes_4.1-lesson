@@ -136,7 +136,6 @@ class CommentListCreateView(generics.ListCreateAPIView):
         post = get_object_or_404(Post, id=post_id, is_active=True)
         comment = serializer.save(author=self.request.user, post=post)
 
-        # Create notification
         if post.author != self.request.user:
             Notification.objects.create(
                 recipient=post.author,
@@ -190,7 +189,6 @@ def like_comment(request, id):
     if not created:
         return Response({'detail': 'Already liked'}, status=status.HTTP_400_BAD_REQUEST)
 
-    # Create notification
     if comment.author != request.user:
         Notification.objects.create(
             recipient=comment.author,

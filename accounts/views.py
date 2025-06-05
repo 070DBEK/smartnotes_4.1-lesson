@@ -27,7 +27,6 @@ class RegisterView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
-        # Send verification email
         verification_url = f"{settings.SITE_URL}/api/v1/auth/verify-email/?token={user.verification_token}"
         send_mail(
             'Verify your email',
@@ -201,7 +200,6 @@ class FollowersListView(generics.ListAPIView):
     def get_queryset(self):
         username = self.kwargs['username']
         user = get_object_or_404(User, username=username)
-        # Get profiles of users who follow this user
         follower_ids = Follow.objects.filter(following=user.profile).values_list('follower', flat=True)
         return Profile.objects.filter(user__id__in=follower_ids)
 
@@ -213,6 +211,5 @@ class FollowingListView(generics.ListAPIView):
     def get_queryset(self):
         username = self.kwargs['username']
         user = get_object_or_404(User, username=username)
-        # Get profiles that this user follows
         following_ids = Follow.objects.filter(follower=user).values_list('following', flat=True)
         return Profile.objects.filter(id__in=following_ids)
