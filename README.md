@@ -200,28 +200,6 @@ curl -X POST http://localhost:8000/api/v1/auth/login/ \
   }'
 \`\`\`
 
-## 🧪 Testlash
-
-### Testlarni ishga tushirish
-\`\`\`bash
-python manage.py test
-\`\`\`
-
-### curl bilan qo'lda testlash
-
-Post yaratish:
-\`\`\`bash
-curl -X POST http://localhost:8000/api/v1/posts/ \
-  -H "Authorization: Bearer <your-token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "Birinchi postim",
-    "content": "Bu mening birinchi postim mazmuni."
-  }'
-\`\`\`
-
-## 🚀 Production ga chiqarish
-
 ### 1. Muhit o'zgaruvchilari
 Production da quyidagi muhit o'zgaruvchilarini o'rnating:
 
@@ -258,7 +236,7 @@ pip install whitenoise
 
 ## 📝 Litsenziya
 
-Ushbu loyiha MIT litsenziyasi ostida litsenziyalangan.
+Ushbu loyiha MIT litsenziyasi ostida litsenziyalanmagan.
 
 ## 🤝 Hissa qo'shish
 
@@ -270,4 +248,4 @@ Ushbu loyiha MIT litsenziyasi ostida litsenziyalangan.
 
 ## 📞 Yordam
 
-Yordam uchun support@yourdomain.com ga xat yuboring yoki GitHub da muammo yarating.
+Yordam uchun ahmadovozodbek80@gmail.com ga xat yuboring yoki GitHub da muammo yarating.
